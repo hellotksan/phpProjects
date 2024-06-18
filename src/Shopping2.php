@@ -15,10 +15,49 @@
     $photo = $_GET['photo'];
 
     // データの表示
-    echo $toId . " " . $name . " " . $price . " " . "<img src='./../images/" . $photo . "' alt='" . $name . "' width='70' height='70'><br>";
+    echo "選んだ商品は「";
+    echo $toId . "、" . $price . "、" . $name . "」です。" . "<img src='./../images/" . $photo . "' alt='" . $name . "' width='70' height='70'><br>";
     ?>
+    <br><br>
 
-    <form action="" method="post">
+    <form action="Shopping3.php" method="post">
+        <input type="hidden" name="toId" value="<?php echo $toId; ?>">
+        <input type="hidden" name="name" value="<?php echo $name; ?>">
+        <input type="hidden" name="price" value="<?php echo $price; ?>">
+        <input type="hidden" name="photo" value="<?php echo $photo; ?>">
+        <input type="hidden" name="quantity" value="0">
+        <input type="hidden" name="cancel_id" value="true">
+        <button type="submit">カートから削除する</button>
+    </form>
+
+    <br>
+    <hr><br>
+
+    <form action="Shopping3.php" method="post">
+        <input type="hidden" name="toId" value="<?php echo $toId; ?>">
+        <input type="hidden" name="name" value="<?php echo $name; ?>">
+        <input type="hidden" name="price" value="<?php echo $price; ?>">
+        <input type="hidden" name="photo" value="<?php echo $photo; ?>">
+        <input type="hidden" name="cancel_id" value="false">
+        <button type="submit">後で買うリストに追加する</button>
+    </form>
+
+    <br>
+    <hr><br>
+
+    <form action="Shopping3.php" method="post">
+        <input type="hidden" name="toId" value="<?php echo $toId; ?>">
+        <input type="hidden" name="name" value="<?php echo $name; ?>">
+        <input type="hidden" name="price" value="<?php echo $price; ?>">
+        <input type="hidden" name="photo" value="<?php echo $photo; ?>">
+        <input type="hidden" name="cancel_id" value="false">
+        <input type="hidden" name="cart_id" value="true">
+        <button type="submit">後で買うリストからカートに追加する</button>
+    </form>
+
+    <br><br>
+
+    <form action="Shopping3.php" method="post">
         <p>購入数の入力
             <select name="quantity">
                 <?php
@@ -30,13 +69,17 @@
             </select>
         </p>
         <!-- 商品情報を送信するための hidden フィールド -->
-        <input type="hidden" name="productId" value="<?php echo $toId; ?>">
-        <input type="hidden" name="productName" value="<?php echo $name; ?>">
-        <input type="hidden" name="productPrice" value="<?php echo $price; ?>">
-        <input type="hidden" name="productPhoto" value="<?php echo $photo; ?>">
+        <input type="hidden" name="toId" value="<?php echo $toId; ?>">
+        <input type="hidden" name="name" value="<?php echo $name; ?>">
+        <input type="hidden" name="price" value="<?php echo $price; ?>">
+        <input type="hidden" name="photo" value="<?php echo $photo; ?>">
+        <input type="hidden" name="cancel_id" value="false">
+        <input type="hidden" name="cart_id" value="yes">
         <button type="submit">カートに入れる</button>
     </form>
 
+    <br><br>
+    <a href="Shopping1.php">Back</a><br>
 </body>
 
 </html>

@@ -225,7 +225,7 @@ DROP TABLE IF EXISTS cart;
 create table cart (
     id VARCHAR(64) primary key,
     purchase INT,
-    after VARCHAR(255)
+    after BOOLEAN
 );
 
 SELECT * FROM shop;
