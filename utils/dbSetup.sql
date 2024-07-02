@@ -263,3 +263,23 @@ VALUES (
         20,
         "banana.png"
     );
+
+CREATE TABLE employee (
+    id VARCHAR(10),
+    name VARCHAR(20),
+    password VARCHAR(64),
+    PRIMARY KEY (id, name)
+);
+
+-- employeeRegisterで(id="P01", name="admin", password="password")を作成しておく
+
+TRUNCATE employee;
+
+CREATE TABLE attendance (
+    id INT NOT NULL,
+    date DATE NOT NULL,
+    day_of_week VARCHAR(10) NOT NULL,
+    check_in_time TIME,
+    check_out_time TIME,
+    PRIMARY KEY (id, date)
+);
