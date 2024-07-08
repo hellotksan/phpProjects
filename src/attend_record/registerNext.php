@@ -10,6 +10,7 @@
 <body>
     <?php
     $id = $_POST['id'];
+    $name = $_POST['name'];
     $password = $_POST['password'];
 
     $db_host = "localhost";
@@ -21,29 +22,25 @@
     $con = mysqli_connect($db_host, $db_user, $db_password, $db_name, $port) or die("接続に失敗しました。");
     mysqli_set_charset($con, "utf8");
 
-    $sql = "SELECT * FROM employee WHERE id = ?";
+    $password_hashed = password_hash($password, PASSWORD_DEFAULT);
+
+    $sql = "INSERT INTO employee (id, name, password) VALUES (?, ?, ?)";
+
     $stmt = $con->prepare($sql);
-    $stmt->bind_param("s", $id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $user = $result->fetch_assoc();
+    $stmt->bind_param("sss", $id, $name, $password_hashed);
 
-    print $id;
-    print $password;
-    print $user;
-
-    if (password_verify($password, $user['password'])) {
-        echo "認証成功";
+    if ($stmt->execute()) {
+        echo "新しいレコードが作成されました";
     } else {
-        echo "認証失敗";
+        echo "エラー: " . $stmt->error;
     }
 
     $stmt->close();
     $con->close();
     ?>
     <br>
-    <a href="login.php">Back to Login</a><br>
-    <a href="register.php">Back to Register</a>
+    <a href="registerNext.php">登録</a><br>
+    <a href="login.php">ログイン</a>
 </body>
 
 </html>

@@ -276,10 +276,17 @@ CREATE TABLE employee (
 TRUNCATE employee;
 
 CREATE TABLE attendance (
-    id INT NOT NULL,
+    id VARCHAR(10) NOT NULL,
+    name VARCHAR(20) NOT NULL,
     date DATE NOT NULL,
     day_of_week VARCHAR(10) NOT NULL,
     check_in_time TIME,
     check_out_time TIME,
+    overtime_minutes INT DEFAULT 0,
+    late_night_overtime_minutes INT DEFAULT 0,
+    holiday_overtime_minutes INT DEFAULT 0,
+    overtime_pay INT DEFAULT 0,
     PRIMARY KEY (id, date)
 );
+
+DROP TABLE IF EXISTS attendance;
