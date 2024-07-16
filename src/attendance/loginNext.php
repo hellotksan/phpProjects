@@ -41,15 +41,14 @@
         }
         exit();
     } else {
-        echo "認証失敗";
+        echo "<h1>認証失敗</h1><br><hr>";
+        echo "<br><a href='login.php'>ログイン</a><br><br><a href='register.php'>登録</a>";
     }
 
     $stmt->close();
     $con->close();
     ?>
     <br>
-    <a href="login.php">ログイン</a><br>
-    <a href="register.php">登録</a>
 </body>
 
 </html>

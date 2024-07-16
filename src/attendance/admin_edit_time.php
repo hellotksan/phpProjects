@@ -33,11 +33,11 @@
     $user = $result->fetch_assoc();
     $name = $user['name'];
 
-    echo $id . ", " . $name . "さん";
+    echo '<h1>出退勤変更</h1><br>';
+    echo "ID: " . $id . ", 名前: " . $name . "さん";
+    echo "<br><hr><br>";
 
-    echo "<hr><br>";
-
-    echo "<form action='timeTables.php' method='post'>";
+    echo "<form action='register_time_tables.php' method='post'>";
     echo "<input type='hidden' name='id' value=" . $id . ">";
     echo "<input type='hidden' name='name' value=" . $name . ">";
     echo "<label for='id'>変更する日時</label>";
@@ -48,6 +48,9 @@
     echo "<input type='time' id='closeTime' name='closeTime' required><br><br>";
     echo "<button type='submit'>変更</button>";
     echo "</form>";
+
+    echo "<br><hr><br>";
+    echo "<a href='admin_dashboard.php'>管理者ダッシュボードに戻る</a>";
 
     $stmt->close();
     $con->close();

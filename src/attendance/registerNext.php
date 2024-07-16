@@ -5,6 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .button {
+            display: inline-block;
+            padding: 8px 20px;
+            font-size: 12px;
+            color: #ffffff;
+            background-color: #777777;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            margin: 2px 1px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 
 <body>
@@ -30,7 +49,7 @@
     $stmt->bind_param("sss", $id, $name, $password_hashed);
 
     if ($stmt->execute()) {
-        echo "新しいレコードが作成されました";
+        echo "新しいユーザを登録しました";
     } else {
         echo "エラー: " . $stmt->error;
     }
@@ -39,8 +58,9 @@
     $con->close();
     ?>
     <br>
-    <a href="registerNext.php">登録</a><br>
-    <a href="login.php">ログイン</a>
+    <br<hr>
+        <br>
+        <a href="login.php" class="button">ログイン</a>
 </body>
 
 </html>

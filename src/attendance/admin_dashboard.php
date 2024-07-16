@@ -45,13 +45,14 @@
     $sql = "SELECT * FROM employee";
     $re = mysqli_query($con, $sql);
 
+    echo "<h1>管理者ダッシュボード</h1><br><hr><br>";
     echo "こんにちは。管理人さん。";
     echo "<br>";
     echo "変更したいユーザーを選んでください。";
-    echo "<br>";
+    echo "<br><br><hr><br>";
 
     while ($row = mysqli_fetch_assoc($re)) {
-        echo '<a href="editTime.php?toId=' . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . '&name=' . htmlspecialchars($row['name'], ENT_QUOTES, 'UTF-8') . '" class="button">変更</a>';
+        echo '<a href="admin_edit_time.php?toId=' . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . '&name=' . htmlspecialchars($row['name'], ENT_QUOTES, 'UTF-8') . '" class="button">変更</a>';
         echo '[' . htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') . '] ' . htmlspecialchars($row['name'], ENT_QUOTES, 'UTF-8');
         echo '<br>';
     }
@@ -59,6 +60,10 @@
     mysqli_free_result($re);
     mysqli_close($con);
     ?>
+
+    <br>
+    <hr><br>
+    <a href="login.php" class="button">ログインに戻る</a>
 </body>
 
 </html>

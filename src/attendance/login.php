@@ -8,13 +8,13 @@
 </head>
 
 <body>
-    <h1>Login</h1>
+    <h1>ログイン画面</h1>
     <form action="loginNext.php" method="post">
         <label for="id">ID:</label>
         <input type="text" id="id" name="id" required><br><br>
-        <label for="password">Password:</label>
+        <label for="password">パスワード:</label>
         <input type="password" id="password" name="password" required><br><br>
-        <input type="submit" value="Login">
+        <input type="submit" value="ログイン">
     </form>
 </body>
 
